@@ -1,7 +1,6 @@
 * PyQCPROT README
 
-
-Author:   Joshua L. Adelman, University of Pittsburgh 
+Original Author:   Joshua L. Adelman, University of Pittsburgh 
 Contact:  jla65@pitt.edu
 
 PyQCPROT is a python/cython implementation of Douglas Theobald's QCP method for
@@ -21,6 +20,13 @@ If you use this QCP rotation calculation method in a publication, please referen
       Pu Liu, Dmitris K. Agrafiotis, and Douglas L. Theobald (2010)
       "Fast determination of the optimal rotational matrix for macromolecular superpositions."
       J. Comput. Chem. 31, 1561-1563. 
+
+** UPDATE
+
+I (Samuel D. Lotz) updated this repository with minor changes in order
+for it to work under python3 and updated the setup.py according to the
+modern Cython documentation. I do not take credit for this code and
+only wish to make it more accessible.
 
 ** License
 This code code is released under the BSD 3-clause license as noted in the .pyx source code 
