@@ -1,6 +1,5 @@
-=====================
-  PyQCPROT README
-=====================
+* PyQCPROT README
+
 
 Author:   Joshua L. Adelman, University of Pittsburgh 
 Contact:  jla65@pitt.edu
@@ -23,8 +22,7 @@ If you use this QCP rotation calculation method in a publication, please referen
       "Fast determination of the optimal rotational matrix for macromolecular superpositions."
       J. Comput. Chem. 31, 1561-1563. 
 
-License
-======= 
+** License
 This code code is released under the BSD 3-clause license as noted in the .pyx source code 
 or LICENSE file. 
 The original C code is copyright:
@@ -32,8 +30,7 @@ The original C code is copyright:
 This implementation is copyright
 2011, Joshua L. Adelman
 
-Installation
-============
+** Installation
 
 This module requires:
 numpy http://numpy.scipy.org/
@@ -51,11 +48,11 @@ Method 2:
 If you do not have cython installed, you can build the extension directly from the cython generated
 pyqcprot.c. This is handled automatically by setup.py.
 
-Example Usage
-=============
+** Example Usage
 
 See example.py for a simple example
 
-For an example using the MDAnalysis package (http://code.google.com/p/mdanalysis/) 
-see mdanalysis_example.py
+For an example using the MDAnalysis package
+(https://github.com/MDAnalysis/mdanalysis/blob/develop/package/MDAnalysis/lib/qcprot.pyx)
+see mdanalysis_example.py.
  
