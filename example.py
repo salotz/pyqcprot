@@ -1,4 +1,4 @@
-""" 
+"""
 Sample code to use the routine for fast RMSD & rotational matrix calculation.
 For the example provided below, the minimum least-squares RMSD for the two
 7-atom fragments should be 0.719106 A.
@@ -8,17 +8,17 @@ For the example provided below, the minimum least-squares RMSD for the two
     [[ 0.72216358 -0.52038257 -0.45572112]
      [ 0.69118937  0.51700833  0.50493528]
      [-0.0271479  -0.67963547  0.73304748]]
-    
+
 
 """
 
-import numpy
+import numpy as np
 import pyqcprot as qcp
 
 # Setup coordinates
 
-frag_a = numpy.zeros((3,7),dtype=numpy.float64)
-frag_b = numpy.zeros((3,7),dtype=numpy.float64)
+frag_a = np.zeros((3,7), dtype=np.float64)
+frag_b = np.zeros((3,7), dtype=np.float64)
 N = 7
 
 frag_a[0][0] =  -2.803
@@ -66,33 +66,29 @@ frag_b[1][6] = -10.001
 frag_b[2][6] =  17.996
 
 # Allocate rotation array
-rot = numpy.zeros((9,),dtype=numpy.float64) 
+rot = np.zeros((9,), dtype=np.float64)
 
 # Calculate center of geometry
-comA = numpy.sum(frag_a,axis=1)/N
-comB = numpy.sum(frag_b,axis=1)/N 
+comA = np.sum(frag_a, axis=1)/N
+comB = np.sum(frag_b, axis=1)/N
 
 # Center each fragment
-frag_a = frag_a - comA.reshape(3,1)
-frag_b = frag_b - comB.reshape(3,1)
+frag_a = frag_a - comA.reshape(3, 1)
+frag_b = frag_b - comB.reshape(3, 1)
 
 # Calculate rmsd and rotation matrix
-rmsd = qcp.CalcRMSDRotationalMatrix(frag_a,frag_b,N,rot,None)
+rmsd = qcp.CalcRMSDRotationalMatrix(frag_a, frag_b, N, rot, None)
 
-print 'qcp rmsd = ',rmsd
-print 'rotation matrix:'
-print rot.reshape((3,3))
+print('qcp rmsd = ',rmsd)
+print('rotation matrix:')
+print(rot.reshape((3,3)))
 
 # Calculate rmsd after applying rotation
-def rmsd(a,b):
+def rmsd(a, b):
     """Returns RMSD between two coordinate sets a and b."""
-    return numpy.sqrt(numpy.sum(numpy.power(a-b,2))/a.shape[1])
-    
+    return np.sqrt(np.sum(np.power(a-b,2)) / a.shape[1])
+
 # rotate frag_b to obtain optimal alignment
-frag_br = frag_b.T*numpy.matrix(rot.reshape((3,3)))    
-rmsd = rmsd(frag_br.T,frag_a)
-print 'rmsd after applying rotation: ',rmsd
-
-
-
-
+frag_br = frag_b.T*np.matrix(rot.reshape( (3,3) ))
+rmsd = rmsd(frag_br.T, frag_a)
+print('rmsd after applying rotation: ', rmsd)
